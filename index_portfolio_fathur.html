@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Muhammad Fathur Rochim</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#0f172a;color:#e5e7eb}
+header{padding:80px 20px;text-align:center;background:linear-gradient(135deg,#0f172a,#1e293b)}
+header h1{margin:0;font-size:40px}
+header p{opacity:.8}
+nav{background:#020617;text-align:center;padding:15px}
+nav a{color:#e5e7eb;margin:0 15px;text-decoration:none;font-weight:bold}
+section{max-width:1100px;margin:auto;padding:60px 20px}
+.card{background:#1e293b;border-radius:14px;padding:25px;margin-bottom:25px}
+
+/* Portfolio Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.project{background:#020617;border-radius:12px;overflow:hidden;transition:.3s}
+.project:hover{transform:translateY(-5px)}
+.project img{width:100%;height:180px;object-fit:cover}
+.project-info{padding:15px}
+.project-info h3{margin:0 0 5px 0}
+
+button{background:#38bdf8;border:none;padding:10px 20px;border-radius:8px;font-weight:bold;cursor:pointer}
+
+footer{text-align:center;padding:30px;background:#020617;margin-top:40px}
+
+/* Modal editor */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center}
+.modal-content{background:#1e293b;padding:30px;border-radius:10px;width:90%;max-width:500px}
+.modal input,.modal textarea{width:100%;margin-bottom:10px;padding:10px;border-radius:6px;border:none}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Muhammad Fathur Rochim</h1>
+<p>Photography • Design • Content Creator</p>
+</header>
+
+<nav>
+<a href="#about">About</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+<div class="card">
+<h2>Tentang Saya</h2>
+<p>Halo, saya Fathur. Saya tertarik pada dunia visual seperti fotografi, desain, dan pembuatan konten. Website ini saya gunakan untuk menampilkan karya-karya saya.</p>
+</div>
+</section>
+
+<section id="portfolio">
+<h2>Portfolio</h2>
+<p>Kamu bisa menambahkan project baru dengan tombol di bawah.</p>
+
+<button onclick="openModal()">+ Tambah Project</button>
+
+<div class="grid" id="portfolioGrid"></div>
+</section>
+
+<section id="contact">
+<div class="card">
+<h2>Kontak</h2>
+<p>Email: ganti-emailmu@email.com</p>
+<p>Instagram: @usernamekamu</p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Muhammad Fathur Rochim</p>
+</footer>
+
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3>Tambah Portfolio</h3>
+<input id="title" placeholder="Judul Project">
+<input id="image" placeholder="Link gambar (URL)">
+<textarea id="desc" placeholder="Deskripsi"></textarea>
+<button onclick="addProject()">Simpan</button>
+</div>
+</div>
+
+<script>
+const grid=document.getElementById('portfolioGrid')
+
+function openModal(){
+ document.getElementById('modal').style.display='flex'
+}
+
+function addProject(){
+ const title=document.getElementById('title').value
+ const image=document.getElementById('image').value
+ const desc=document.getElementById('desc').value
+
+ const card=`
+ <div class="project">
+ <img src="${image}" alt="project">
+ <div class="project-info">
+ <h3>${title}</h3>
+ <p>${desc}</p>
+ </div>
+ </div>`
+
+ grid.innerHTML+=card
+ document.getElementById('modal').style.display='none'
+}
+</script>
+
+</body>
+</html>
